@@ -102,6 +102,14 @@ exports.translateInitialMessage = functions.firestore.document(`messages/{id}`)
           return `https://www.googleapis.com/language/translate/v2?key=${GLOBAL_KEY}&source=${source}&target=${target}&q=${message}`;
         }
 
+        let t = {};
+        t[_sourceLang] = _text;
+        if (_sourceLang === _targetLang) {
+          return admin.firestore().doc(`messages/${context.params.id}`).set({
+            translations: t,
+          }, {merge: true});
+        }
+
         let translation = {};
         return request(createTranslateUrl(_sourceLang, _targetLang, _text), {resolveWithFullResponse: true}).then(
           response => {
@@ -137,9 +145,7 @@ exports.translateInitialMessage = functions.firestore.document(`messages/{id}`)
       const oldMessage = snapshot.data().originalMessage;
 
       _.each(allowedLanguages, (lang) => {
-        if (lang !== oldLanguage) {
-          promises.push(getTranslatedMessage(oldLanguage, lang, oldMessage));
-        }
+        promises.push(getTranslatedMessage(oldLanguage, lang, oldMessage));
       });
 
       return Promise.all(promises);
