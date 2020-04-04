@@ -25,7 +25,7 @@
                 <div class="card-body">
                   <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
                 </div>
-                <p class="text-muted ml-1"><small>From: {{message.uName}} at {{message.timeSent.toDate()}}</small></p>
+                <p class="text-muted ml-1"><small><div class="sender">{{message.uName}}</div></small></p>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
                 <div class="card-body">
                   <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
                 </div>
-                <p class="text-muted ml-1"><small>From: {{message.uName}} at {{message.timeSent.toDate()}}</small></p>
+                <p class="text-muted ml-1"><small><div class="sender">{{message.uName}}</div> </small></p>
               </div>
             </div>
 

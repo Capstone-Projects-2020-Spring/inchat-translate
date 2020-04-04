@@ -18,23 +18,21 @@ export class UserService {
     return true;
   }
 
-  async doesUserExist(uId: string) {
+  doesUserExist(uId: string) {
     let docExist: boolean;
     const docRef = this.dbRef.doc(uId);
-    await docRef.get().toPromise().then((doc) => {
+    docRef.get().toPromise().then((doc) => {
       if (doc.exists) {
         // console.log('Document data:', doc.data());
-        docExist = true;
+        return true;
       } else {
         // doc.data() will be undefined in this case
         // console.log('No such document!');
-        docExist = false;
+        return true;
       }
     }).catch((error) => {
       console.log('Error getting document:', error);
     });
-    console.log(docExist);
-    return docExist;
   }
 
   createUser(uId: string) {

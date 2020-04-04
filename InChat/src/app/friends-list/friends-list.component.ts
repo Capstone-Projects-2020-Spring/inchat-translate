@@ -5,7 +5,8 @@ import { UserService } from '../services/user.service';
 import { FriendsService } from '../services/friends.service';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
+
 
 
 @Component({
@@ -16,23 +17,11 @@ import { UserService } from '../services/user.service';
 export class FriendsListComponent implements OnInit {
 
   constructor(private afAuth: AuthService, private  friendsService: FriendsService, private userService: UserService) { }
-
-    //friendsUID;
-    //friendsUname;
-    uid = this.afAuth.Auth.auth.currentUser.uid;
+    uid;
     uName;
-    
 
-  async ngOnInit() {
-    
-    //this.uid = await this.userService.emailToUID("tug51985@temple.edu");
-    //var uid = this.afAuth.Auth.auth.currentUser.uid
-    //this.uName = await this.userService.uIDToUname(this.uid);
-    //this.uName = this.userService.getCurrentUser().data().userDB.uName;
 
-    //asynchronus friends list because function returns promise
-    //this.friendsUID = await this.friendsService.listFriends(this.uid);
-    //this.friendsUID = this.userService.getCurrentUser().data().userDB.friends;
-
+  ngOnInit() {
+    console.log(this.friendsService.addFriend(this.afAuth.Auth.auth.currentUser.uid, 'there.is.no.spoon148@gmail.com'));
   }
 }

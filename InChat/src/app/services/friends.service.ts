@@ -16,53 +16,18 @@ export class FriendsService {
   dbRef = this.db.collection('users');
   currentUser = this.afAuth.Auth.auth.currentUser;
 
-  /* unneeded
-  async listFriends(uID: string) {
-    // not reactive, but works, wont update with added friends
-    let friends = await this.dbRef.doc(uID).ref.get().then(doc => {
-      console.log(doc.data());
-      return doc.data().userDB.friends;
-    });
 
-    // Dynamic as per "valueChanges()," automatically updates when friends are added
-    // doesn't work though
-    var friends = await this.dbRef.doc(uID).valueChanges().subscribe(doc => {
-      const user = doc as User;
-      console.log(user.uName);
-      console.log(user);
-      return userDB.friends;
-      //return doc.data().userDB.friends;
-      });
-    return friends;
-  }
-  */
 
-  deleteFriend(uID: string, fID: string) {
+  deleteFriend(uID: string, friendEmail: string) {
     this.dbRef.doc(uID).update(
-      { 'userDB.friends': firebase.firestore.FieldValue.arrayRemove(fID)}).then(() =>
-        console.log(uID + ' removed friend ' + fID));
-    alert(fID + ' removed');
+      { 'userDB.friends': firebase.firestore.FieldValue.arrayRemove(friendEmail)}).then(() =>
+        console.log(uID + ' removed friend ' + friendEmail));
+    alert(friendEmail + ' removed');
     return true;
   }
 
-  addFriend(uID: string, fID: string) {
-    this.dbRef.doc(uID).update(
-      { 'userDB.friends': firebase.firestore.FieldValue.arrayUnion(fID)}).then(() =>
-        console.log(uID + ' added friend ' + fID));
-    alert(fID + ' added');
-    return true;
+  addFriend(uID: string, friendEmail: string) {
+    return this.db.collection('users', ref => ref.where('email', '==', friendEmail)).valueChanges();
   }
 
-  /*under development
-  addFriendEmail(uID:string, friendEmail:string){
-    var friendID = this.db.collection('users', ref => ref.where('email', '==', friendEmail)).valueChanges(
-      {idField: 'eventId'}
-    );
-
-    this.addFriend(uID, friendID);
-    return true;
-  }
-  */
-
-  
 }
