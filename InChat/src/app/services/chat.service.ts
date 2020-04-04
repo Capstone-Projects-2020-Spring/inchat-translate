@@ -18,9 +18,8 @@ export class ChatService {
 
 
   // Creating a Chat
-  creatchats(chatName: string) {
-    return new Promise((resolve) => {
-      this.db.collection('chats').add({
+  createChats(chatName) {
+    return new Promise((resolve) => { this.db.collection('chats').add({
         chatName,
         creator: this.afAuth.auth.currentUser.email,
         chatId: '',
@@ -28,7 +27,7 @@ export class ChatService {
         this.chatDocRef = docRef.id;
         docRef.collection('users').add({
           email: this.afAuth.auth.currentUser.email,
-          displayNAme: this.afAuth.auth.currentUser.displayName
+          displayName: this.afAuth.auth.currentUser.displayName
         }).then(() => {
           this.db.collection('chats').add({
             chatName,

@@ -70,7 +70,14 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <ul>
+          <div *ngFor="let friend of userService.getCurrentUser().userDB.friends" class="col-3" style="padding:10px">
+              <button class="btn btn-outline-secondary" type="button" 
+                  style="background-color: #ff4444; color:white;" id="button-addon4"
+                  (click)="friendsService.deleteFriend(uid, friend)">Add</button>
+              {{ friend }}
+          </div>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -98,7 +98,16 @@ exports.translateInitialMessage = functions.firestore.document(`messages/{id}`)
       
       const getTranslatedMessage = (_sourceLang, _targetLang, _text) => {
         function createTranslateUrl(source, target, text) {
-          return `https://www.googleapis.com/language/translate/v2?key=${GLOBAL_KEY}&source=${source}&target=${target}&q=${text}`;
+          const message = encodeURIComponent(text);
+          return `https://www.googleapis.com/language/translate/v2?key=${GLOBAL_KEY}&source=${source}&target=${target}&q=${message}`;
+        }
+
+        let t = {};
+        t[_sourceLang] = _text;
+        if (_sourceLang === _targetLang) {
+          return admin.firestore().doc(`messages/${context.params.id}`).set({
+            translations: t,
+          }, {merge: true});
         }
 
         let translation = {};
