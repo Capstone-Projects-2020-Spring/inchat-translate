@@ -24,9 +24,7 @@ export class ChatsComponent implements OnInit {
 
   messages;
   translatedMessages: string[] = [];
-  func;
   ngOnInit() {
-    this.func = this.scrollBottom();
     this.afAuth.Auth.auth.onAuthStateChanged(() => {
       if (this.afAuth.Auth.auth.currentUser === null) {
         console.log('No chats to display');
@@ -37,11 +35,8 @@ export class ChatsComponent implements OnInit {
             this.messages = response;
         });
       }
-    });
-  }
 
-  scrollBottom() {
-    console.log('hello');
+    });
   }
 
   messageSorter(a: Message, b: Message) {

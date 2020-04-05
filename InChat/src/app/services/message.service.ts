@@ -43,4 +43,11 @@ export class MessageService {
       console.error('Error adding document: ', error);
     });
   }
+
+  textToSpeech(text:string){
+    const googleLink = 'link...' + text + 'more of the link'
+    //do your function
+  }
 }
+
+
