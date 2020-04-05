@@ -59,7 +59,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -72,9 +72,7 @@
       <div class="modal-body">
         <ul>
           <div *ngFor="let friend of userService.getCurrentUser().userDB.friends" class="col-3" style="padding:10px">
-              <button class="btn btn-outline-secondary" type="button" 
-                  style="background-color: #ff4444; color:white;" id="button-addon4"
-                  (click)="friendsService.deleteFriend(uid, friend)">Add</button>
+              <label><input type="checkbox" value="">Add</label>>
               {{ friend }}
           </div>
         </ul>
