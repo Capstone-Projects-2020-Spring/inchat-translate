@@ -16,7 +16,7 @@ import { User } from '../models/user.model';
 })
 export class FriendsListComponent implements OnInit {
 
-  constructor(private afAuth: AuthService, private  friendsService: FriendsService, private userService: UserService) { }
+  constructor(public afAuth: AuthService, public friendsService: FriendsService, public userService: UserService) { }
     uid;
     uName;
 
