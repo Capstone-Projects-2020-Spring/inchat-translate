@@ -26,8 +26,17 @@ export class FriendsService {
     return true;
   }
 
-  addFriend(uID: string, friendEmail: string) {
-    return this.db.collection('users', ref => ref.where('email', '==', friendEmail)).valueChanges();
+  addFriend(userId: string, friendEmail: string) {
+    const friend = this.db.collection('users', ref => ref.where('userDB.email', '==', friendEmail)).get();
+    friend.subscribe(response => {
+      response.forEach(doc => {
+        if (doc.exists) {
+          this.dbRef.doc(userId).update(
+            { 'userDB.friends': firebase.firestore.FieldValue.arrayUnion(friendEmail)}).then(() =>
+              console.log(userId + ' added friend ' + friendEmail));
+        }
+      });
+    });
   }
 
 }

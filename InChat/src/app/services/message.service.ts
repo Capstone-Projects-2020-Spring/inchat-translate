@@ -22,6 +22,10 @@ export class MessageService {
     return this.db.collection('messages', ref => ref.where('chatId', '==', chatId)).valueChanges();
   }
 
+  getHomeMessage() {
+    return this.db.collection('messages', ref => ref.where('chatId', '==', 'home')).valueChanges();
+  }
+
   // function used for sending messages. A user would send a message that would get stored on the database
   sendMessage(chatId: string = 'test-id', contents: string) {
     console.log(this.userService.getCurrentUser().userDB.language);
@@ -43,10 +47,12 @@ export class MessageService {
       console.error('Error adding document: ', error);
     });
   }
-
-  textToSpeech(text:string){
-    const googleLink = 'link...' + text + 'more of the link'
-    //do your function
+  messageSorter(a: Message, b: Message) {
+    if (a.timeSent === b.timeSent) {
+      return 0;
+    } else {
+      return a.timeSent < b.timeSent ? -1 : 1;
+    }
   }
 }
 

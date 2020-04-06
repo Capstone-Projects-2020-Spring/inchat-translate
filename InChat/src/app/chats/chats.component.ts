@@ -31,21 +31,12 @@ export class ChatsComponent implements OnInit {
       } else {
         console.log(this.afAuth.Auth.auth.currentUser.uid);
         this.messageService.getMessages('test-id').subscribe(response => {
-            response.sort(this.messageSorter);
+            response.sort(this.messageService.messageSorter);
             this.messages = response;
         });
       }
 
     });
   }
-
-  messageSorter(a: Message, b: Message) {
-    if (a.timeSent === b.timeSent) {
-      return 0;
-    } else {
-      return a.timeSent < b.timeSent ? -1 : 1;
-    }
-  }
-
 }
 

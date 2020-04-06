@@ -22,6 +22,5 @@ export class FriendsListComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.friendsService.addFriend(this.afAuth.Auth.auth.currentUser.uid, 'there.is.no.spoon148@gmail.com'));
   }
 }

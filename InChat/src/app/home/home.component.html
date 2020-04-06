@@ -1,4 +1,8 @@
-<div>InChat</div>
-<div *ngIf="userIds">
-    <h1 *ngFor="let id of userIds">{{ id }}</h1>
+<div class="container-fluid">
+    <h1 class="h1">Welcome to InChat!</h1>
+    <div *ngIf="greetingMessage && userService.getCurrentUser()" class="row">
+        <p class="h3" *ngFor="let sentence of greetingMessage">
+            {{sentence.translations[userService.getCurrentUser().userDB.language]}}
+        </p>
+    </div>
 </div>

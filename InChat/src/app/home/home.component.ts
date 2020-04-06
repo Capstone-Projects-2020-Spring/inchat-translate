@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   userRef = this.db.collection('users');
   user: any;
   userIds: string[] = [];
+
+  greetingMessage;
   constructor(
     private afAuth: AuthService,
     private messageService: MessageService,
@@ -26,6 +28,10 @@ export class HomeComponent implements OnInit {
     private utils: UtilsService) { }
 
   ngOnInit() {
+    this.messageService.getHomeMessage().subscribe( response => {
+      response.sort(this.messageService.messageSorter);
+      this.greetingMessage = response;
+    });
   }
 
 }
