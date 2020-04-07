@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {BehaviorSubject, Subject, combineLatest} from 'rxjs';
 import * as firebase from 'firebase';
-import { AngularFireAuth } from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatService {
-
   chatDocRef: any;
   currentChat: any;
 
@@ -19,7 +18,8 @@ export class ChatService {
 
   // Creating a Chat
   createChats(chatName) {
-    return new Promise((resolve) => { this.db.collection('chats').add({
+    return new Promise((resolve) => {
+      this.db.collection('chats').add({
         chatName,
         creator: this.afAuth.auth.currentUser.email,
         chatId: '',
@@ -27,14 +27,14 @@ export class ChatService {
         this.chatDocRef = docRef.id;
         docRef.collection('users').add({
           email: this.afAuth.auth.currentUser.email,
-          displayName: this.afAuth.auth.currentUser.displayName
+          displayName: this.afAuth.auth.currentUser.displayName,
         }).then(() => {
           this.db.collection('chats').add({
             chatName,
-            creator: this.afAuth.auth.currentUser.email
+            creator: this.afAuth.auth.currentUser.email,
           }).then((docRefs) => {
             this.db.collection('chats').doc(this.chatDocRef).update({
-              chatId: docRefs.id
+              chatId: docRefs.id,
             }).then(() => {
               resolve();
             });
@@ -46,8 +46,8 @@ export class ChatService {
 
   getChats() {
     return new Promise((resolve) => {
-      const createdChatObs = this.db.collection('chats', ref => ref.where('creator', '==', this.afAuth.auth.currentUser.email))
-      .valueChanges();
+      const createdChatObs = this.db.collection('chats', (ref) => ref.where('creator', '==', this.afAuth.auth.currentUser.email))
+          .valueChanges();
       const UserofCollRef = this.db.collection('Userof').ref;
       const queryRef = UserofCollRef.where('email', '==', this.afAuth.auth.currentUser.email);
       queryRef.get().then((snapShot) => {
@@ -62,7 +62,7 @@ export class ChatService {
     });
   }
 
-  //Add users to chat
+  // Add users to chat
   addUser(user) {
     return new Promise((resolve) => {
       const docRef = this.db.collection('chats').ref;
@@ -76,7 +76,7 @@ export class ChatService {
             queryRef.get().then((snapShot) => {
               if (snapShot.empty) {
                 this.db.collection('userof').add({
-                  email: user.email
+                  email: user.email,
                 }).then((docRef) => {
                   this.db.doc('userof/' + docRef.id).collection('chats').add(this.currentChat).then(() => {
                     resolve();
@@ -94,7 +94,7 @@ export class ChatService {
     });
   }
 
-  //get users from a chat
+  // get users from a chat
   getUserChats() {
     return new Promise((resolve) => {
       const docRef = this.db.collection('chats').ref;

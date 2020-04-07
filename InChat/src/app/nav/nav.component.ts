@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
-import { SettingsService } from '../services/settings.service';
-import { User } from '../models/user.model';
+import {Component, OnInit} from '@angular/core';
+import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {AuthService} from '../services/auth.service';
+import {UserService} from '../services/user.service';
+import {SettingsService} from '../services/settings.service';
+import {User} from '../models/user.model';
 
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss', '../sign-in/sign-in.component.scss']
+  styleUrls: ['./nav.component.scss', '../sign-in/sign-in.component.scss'],
 })
 export class NavComponent implements OnInit {
   loggedIn = false;
   currentUser: any;
-  userRef = this.db.collection('users');
+  userRef = db.collection('users');
   user: any;
   showAlert = false;
 
@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
         this.loggedIn = true;
         this.currentUser = this.afAuth.Auth.auth.currentUser;
         add = await this.userService.doesUserExist(this.currentUser.uid);
-        this.userService.getUser(this.currentUser.uid).subscribe(user => {
+        this.userService.getUser(this.currentUser.uid).subscribe((user) => {
           this.userService.setCurrentUser(user as User);
           console.log(this.userService.getCurrentUser().userDB.language);
         });
@@ -65,5 +65,4 @@ export class NavComponent implements OnInit {
     await this.userService.editUsername(uName);
     console.log('Success!');
   }
-
 }

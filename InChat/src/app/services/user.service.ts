@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { AuthService } from './auth.service';
-import { User } from '../models/user.model';
+import {Injectable} from '@angular/core';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AuthService} from './auth.service';
+import {User} from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   constructor(private db: AngularFirestore, private afAuth: AuthService) { }
-  dbRef = this.db.collection('users');
+  dbRef = db.collection('users');
   currentUser;
   users: AngularFirestoreDocument<User>;
 
@@ -37,7 +36,7 @@ export class UserService {
 
   createUser(uId: string) {
     if (this.afAuth.Auth.auth.currentUser) {
-      this.dbRef.doc(this.afAuth.Auth.auth.currentUser.uid).valueChanges().subscribe(data => {
+      this.dbRef.doc(this.afAuth.Auth.auth.currentUser.uid).valueChanges().subscribe((data) => {
         const user = data;
         if (user === undefined) {
           const userDB: User = {
@@ -47,9 +46,9 @@ export class UserService {
             lastSeen: null,
             language: 'en',
             friends: [],
-            chats: []
+            chats: [],
           };
-          this.dbRef.doc(uId).set({ userDB });
+          this.dbRef.doc(uId).set({userDB});
           return;
         }
       });
@@ -58,10 +57,10 @@ export class UserService {
 
   editUsername(newName: string) {
     this.db.collection('users').doc(this.afAuth.Auth.auth.currentUser.uid).update(
-      { 'userDB.uName': newName }).then(() => console.log('field updated'));
+        {'userDB.uName': newName}).then(() => console.log('field updated'));
   }
 
-  getUser(userId){
+  getUser(userId) {
     return this.db.collection('users').doc(userId).valueChanges();
   }
 
@@ -73,5 +72,4 @@ export class UserService {
     this.currentUser = user;
     // console.log(this.currentUser.userDB.language);
   }
-
 }

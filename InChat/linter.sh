@@ -4,4 +4,4 @@
 eslint functions/index.js
 
 # Linting of typescript files in src/
-eslint src/app/ --ext ts
+eslint src/app/ --ext .ts
