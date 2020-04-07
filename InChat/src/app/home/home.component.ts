@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private afAuth: AuthService,
     private messageService: MessageService,
-    private userService: UserService,
+    public userService: UserService,
     private db: AngularFirestore,
     private utils: UtilsService) { }
 

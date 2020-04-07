@@ -41,13 +41,10 @@ describe('User Functionality', function () {
     });
   });
 
-  // TODO: Add more testing for checking if user exists in the database
   describe('#doesUserExist() JSON format', function () {
     
   });
 
-  // TODO: Add more testing for checking that a user was successfully
-  // or unsuccessfully removed from the database
   describe('#deleteUser() JSON format', function () {
     
   });
