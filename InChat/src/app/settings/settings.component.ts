@@ -11,7 +11,7 @@ export class SettingsComponent implements OnInit {
   constructor(private db: AngularFirestore, private afAuth: AuthService) { }
 
   codes: string[] = ['en', 'es', 'fr', 'it', 'ko', 'ru'];
-  uid = afAuth.Auth.auth.currentUser.uid;
+  uid = this.afAuth.Auth.auth.currentUser.uid;
 
   ngOnInit() {
   }

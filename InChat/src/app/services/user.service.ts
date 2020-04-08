@@ -8,7 +8,7 @@ import {User} from '../models/user.model';
 })
 export class UserService {
   constructor(private db: AngularFirestore, private afAuth: AuthService) { }
-  dbRef = db.collection('users');
+  dbRef = this.db.collection('users');
   currentUser;
   users: AngularFirestoreDocument<User>;
 

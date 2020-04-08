@@ -12,8 +12,8 @@ import {User} from '../models/user.model';
 
 export class FriendsService {
   constructor(private http: HttpClient, private db: AngularFirestore, private afAuth: AuthService) { }
-  dbRef = db.collection('users');
-  currentUser = afAuth.Auth.auth.currentUser;
+  dbRef = this.db.collection('users');
+  currentUser = this.afAuth.Auth.auth.currentUser;
 
 
   deleteFriend(uID: string, friendEmail: string) {

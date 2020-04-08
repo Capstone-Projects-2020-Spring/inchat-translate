@@ -14,7 +14,7 @@ import {User} from '../models/user.model';
 export class NavComponent implements OnInit {
   loggedIn = false;
   currentUser: any;
-  userRef = db.collection('users');
+  userRef = this.db.collection('users');
   user: any;
   showAlert = false;
 

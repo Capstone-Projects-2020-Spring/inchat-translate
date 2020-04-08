@@ -15,7 +15,7 @@ import {UtilsService} from '../services/utils.service';
 export class HomeComponent implements OnInit {
   loggedIn = false;
   currentUser: any;
-  userRef = db.collection('users');
+  userRef = this.db.collection('users');
   user: any;
   userIds: string[] = [];
 
