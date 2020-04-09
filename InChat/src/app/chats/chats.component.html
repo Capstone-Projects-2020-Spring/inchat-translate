@@ -1,61 +1,60 @@
-<div class="container-fluid">
-  <!--Chat holder -->
-  <div class="row" id="chatHolder" style="height:92.55vh;">
-    <!--Chat list-->
-    <div class="col-3" style="border: rgba(19, 18, 18, 0.623);
-        border-style: outset;">
-      <div class="row justify-content-center" id="chatsHeader" style="background-color:#7AB1E4; color:white;">
-        Chats</div>
-      <div style="position: absolute; bottom: 5px; background-color: green">
-        <!--New Chat-->
-        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModalCenter"
-          style="background-color: #7AB1E4; color:white;" id="button-addon2">New Chat</button>
-      </div>
+<!--Chat holder -->
+<div id="chatHolder">
+  <!--Chat list-->
+  <div class="chats">
+    <div class="chatsHeader">
+      Chats
     </div>
-
-
-    <!--Messages-->
-    <div id="messageContainer" class="col-9" style="border: rgba(19, 18, 18, 0.623);
-        border-style: outset; position: relative; bottom: 0;">
-      <div id="messages" class="overflow-auto">
-        <div class="mr-2"*ngFor="let message of messages">
-          <div *ngIf="message.uName !== userService.getCurrentUser().userDB.uName; else rightSide">
-            <div>
-              <div class="card mt-1 mb-1 received">
-                <div class="card-body">
-                  <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
-                </div>
-                <p class="text-muted ml-1"><small><div class="mt-1 ml-1 sender">{{message.uName}}</div></small></p>
-              </div>
-            </div>
-          </div>
-          <ng-template #rightSide>
-            <div class="sent">
-              <div class="card mt-1 mb-1 sent">
-                <div class="card-body">
-                  <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
-                </div>
-                <p class="text-muted ml-1"><small><div class="mt-1 ml-1 sender">{{message.uName}}</div> </small></p>
-              </div>
-            </div>
-
-          </ng-template>
-        </div>
-      </div>
-      <div style="position: absolute; bottom: 0px; width: 70vw" class="input-group mb-3">
-        <input #messageBox type="text" class="form-control" placeholder="Message..." aria-label="Message"
-          aria-describedby="button-addon2" (keyup.enter)="messageService.sendMessage('test-id',messageBox.value); messageBox.value = ''">
-        <div>
-          <button class="btn btn-outline-secondary" type="submit"
-            style="background-color: rgb(197, 202, 206); color:white;" id="button-addon2"
-            (click)="messageService.sendMessage('test-id',messageBox.value); messageBox.value = ''">Send</button>
-          <!--first arg change to chatID-->
-        </div>
-      </div>
-
+    <div>
+      <!--New Chat-->
+      <button class="btn btn-outline-secondary newChatButton" type="button" data-toggle="modal"
+        data-target="#exampleModalCenter" id="button-addon2">New
+        Chat</button>
     </div>
+    
   </div>
 
+  <div id="messageContainer">
+    <div id="messages" class="overflow-auto ml-2">
+      <div class="mr-2" *ngFor="let message of messages">
+        <div *ngIf="message.uName !== userService.getCurrentUser().userDB.uName; else rightSide">
+          <div>
+            <div class="card mt-1 mb-1 received">
+              <div class="card-body">
+                <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
+              </div>
+              <p class="text-muted ml-1"><small>
+                  <div class="mt-1 ml-1 sender">{{message.uName}}</div>
+                </small></p>
+            </div>
+          </div>
+        </div>
+        <ng-template #rightSide>
+          <div class="sent">
+            <div class="card mt-1 mb-1 sent">
+              <div class="card-body">
+                <p class="card-text">{{message.translations[userService.getCurrentUser().userDB.language]}}</p>
+              </div>
+              <p class="text-muted ml-1"><small>
+                  <div class="mt-1 ml-1 sender">{{message.uName}}</div>
+                </small></p>
+            </div>
+          </div>
+
+        </ng-template>
+      </div>
+    </div>
+    <div id="sendMessageBox" class="input-group">
+      <input #messageBox type="text" class="form-control" placeholder="Message..." aria-label="Message"
+        aria-describedby="button-addon2"
+        (keyup.enter)="messageService.sendMessage('test-id',messageBox.value); messageBox.value = ''">
+      <div>
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+          (click)="messageService.sendMessage('test-id',messageBox.value); messageBox.value = ''">Send</button>
+        <!--first arg change to chatID-->
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -72,8 +71,8 @@
       <div class="modal-body">
         <ul>
           <div *ngFor="let friend of userService.getCurrentUser().userDB.friends" class="col-3" style="padding:10px">
-              <label><input type="checkbox" value="">Add</label>>
-              {{ friend }}
+            <label><input type="checkbox" value="">Add</label>>
+            {{ friend }}
           </div>
         </ul>
       </div>

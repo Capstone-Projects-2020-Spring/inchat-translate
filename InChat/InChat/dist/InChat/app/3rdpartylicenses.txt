@@ -1,10 +1,10 @@
-@firebase/firestore
-Apache-2.0
-
-@firebase/component
+@firebase/util
 Apache-2.0
 
 firebase/app
+
+@firebase/app
+Apache-2.0
 
 tslib
 Apache-2.0
@@ -65,10 +65,13 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 END OF TERMS AND CONDITIONS
 
 
+@firebase/component
+Apache-2.0
+
 @firebase/logger
 Apache-2.0
 
-@firebase/app
+@firebase/firestore
 Apache-2.0
 
 @firebase/webchannel-wrapper
@@ -508,9 +511,6 @@ Apache-2.0
 firebase/auth
 
 firebase/firestore
-
-@firebase/util
-Apache-2.0
 
 zone.js
 MIT
