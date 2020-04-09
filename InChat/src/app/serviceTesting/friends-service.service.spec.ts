@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { FriendsService } from '../services/friends.service';
+import {FriendsService} from '../services/friends.service';
 
 describe('FriendsServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
