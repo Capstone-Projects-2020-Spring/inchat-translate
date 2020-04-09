@@ -7,6 +7,15 @@
     -moz-box-shadow:    inset 0 0 10px rgba(255, 255, 255, 0.164);
     -webkit-box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.164);
     box-shadow:         inset 0 0 10px rgba(255, 255, 255, 0.164);
+    height:100%;
+    position:fixed;
+    width:100%;
+    
+    .chats{
+        float:left;
+        width:30%;
+        height:100%;
+    }
 
     .row {
         border-bottom: rgba(19, 18, 18, 0.623);
