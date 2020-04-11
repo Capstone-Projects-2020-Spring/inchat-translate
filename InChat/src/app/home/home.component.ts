@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   userRef = this.db.collection('users');
   user: any;
   userIds: string[] = [];
+  images: string[] = ['assets/home_images/not_translated.jpg', 'assets/home_images/pickLanguage.jpg', 'assets/home_images/translatedMessage.jpg'];
 
   greetingMessage;
   constructor(
