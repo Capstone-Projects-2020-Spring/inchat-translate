@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #0C4376; height:90.55vh;">
+<div class="container-fluid friendsHolder" style="background-color: #0C4376;">
     <div id="addFriend" class="col-3" style="padding-top:10px">
         <div class="input-group mb-3">
             <input #addBox type="text" class="form-control" placeholder="Add Friend by email " aria-label="Message"
@@ -20,7 +20,7 @@
                     style="padding:10px">
                     {{ friend }}
                     <button class="btn btn-outline-secondary addFriend" type="button"
-                        style="" id="button-addon4"
+                        id="button-addon4"
                         (click)="friendsService.deleteFriend(afAuth.Auth.auth.currentUser.uid,friend)">Delete</button>
 
                 </div>

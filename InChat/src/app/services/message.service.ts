@@ -47,6 +47,7 @@ export class MessageService {
       console.error('Error adding document: ', error);
     });
   }
+  
   messageSorter(a: Message, b: Message) {
     if (a.timeSent === b.timeSent) {
       return 0;

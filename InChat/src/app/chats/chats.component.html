@@ -15,7 +15,7 @@
   </div>
 
   <div id="messageContainer">
-    <div id="messages" class="overflow-auto ml-2">
+    <div  #scrollBottom id="messages" class="overflow-auto ml-2">
       <div class="mr-2" *ngFor="let message of messages">
         <div *ngIf="message.uName !== userService.getCurrentUser().userDB.uName; else rightSide">
           <div>
