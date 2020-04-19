@@ -55,6 +55,16 @@ export class MessageService {
       return a.timeSent < b.timeSent ? -1 : 1;
     }
   }
+  textToSpeech(text:string){
+    //fully working english finally made html 5 to work
+      
+      var msg = new SpeechSynthesisUtterance(text);
+      var languageChoice = this.userService.getCurrentUser().userDB.language;
+      var LC = languageChoice.toString();
+      msg.lang = LC;
+      window.speechSynthesis.speak(msg);
+    
+    }
 }
 
 
