@@ -1,10 +1,7 @@
 # inchat-translate
-
-
 inchat-translate is a group chatting application which is integrated with Firebase and the Google Translation API. User will be able to login, choose their preferred language and join a chat room. This all happens regardless of what language other recipients may use. The text will be translated to the each user's preferred language seemlessly.
 
 ## Getting Started
-
 <dl>
   <dt>1.Install VS code</dt>
   <dt>2.Using the VS terminal install Angular and the Angular CLI</dt>
@@ -15,8 +12,29 @@ inchat-translate is a group chatting application which is integrated with Fireba
   <dd>Run the command "ng serve -o"</dd>
 <dl>
 
+# Project Software Release Information
+Below is all of the required information as per the 'Project Software Release' assignment on Canvas.
 
-## Initializing The Repository
+## New Features Implemented
+1. Angular 9 Front-end UI for user input/feedback
+2. User Account Creation
+3. User Account Deletion
+4. User Account Signing In
+5. User Account Signing Out
+6. User Language Settings
+7. User 'Username' Settings
+8. Text-based Message Sending
+9. Text-based Message Receiving
+10. Text-based Message Translations
+11. Friend List Viewing
+12. Friend List Adding New Friends
+13. Friend List Removing Old Friends
+
+## Known Bugs in Final Release
+1. New chat creation does not work
+2. Speech-based message sending and receiving does not work
+
+## Detailed Build Instructions
 1. clone the repository by running the following command, or by forking it and then cloning. "git clone git@github.com:Capstone-Projects-2020-Spring/inchat-translate.git"
 2. Move into the "inchat-translate/InChat/" directory.
 3. Run the command "npm install", which will install all of the required dependencies and development dependencies.
