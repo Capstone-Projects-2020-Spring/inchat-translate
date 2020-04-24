@@ -29,10 +29,12 @@ Below is all of the required information as per the 'Project Software Release' a
 11. Friend List Viewing
 12. Friend List Adding New Friends
 13. Friend List Removing Old Friends
+14. Speech-based Message Receiving
+15. Speech-based Message Listening
 
 ## Known Bugs in Final Release
 1. New chat creation does not work
-2. Speech-based message sending and receiving does not work
+2. Speech-based message sending does not work
 
 ## Detailed Build Instructions
 1. clone the repository by running the following command, or by forking it and then cloning. "git clone git@github.com:Capstone-Projects-2020-Spring/inchat-translate.git"
