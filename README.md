@@ -42,7 +42,7 @@ Below is all of the required information as per the 'Project Software Release' a
 3. Run the command "npm install", which will install all of the required dependencies and development dependencies.
 4. Use the following four commands to interact primarily with the web application environment:
   - "npm run build"
-  - "ge serve -o"
+  - "ng serve -o"
   - "npm run lint"
   - "npm run test"
 5. **Note: In order to successfully run this project, you will need to create a firebase project. Link to a tutorial: https://docs.kii.com/en/samples/push-notifications/push-notifications-android-fcm/create-project/**
