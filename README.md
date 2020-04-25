@@ -33,7 +33,7 @@ Below is all of the required information as per the 'Project Software Release' a
 15. Speech-based Message Listening
 
 ## Known Bugs in Final Release
-1. New chat creation does not work
+1. New chat creation and deletion does not work
 2. Speech-based message sending does not work
 
 ## Detailed Build Instructions
