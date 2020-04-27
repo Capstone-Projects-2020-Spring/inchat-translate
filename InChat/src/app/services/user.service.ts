@@ -64,6 +64,16 @@ export class UserService {
     return this.db.collection('users').doc(userId).valueChanges();
   }
 
+  getUserFriendsUname(){
+    let friendUname: string[] = []
+    let friendIDs: string[] = this.getCurrentUser().userDB.friends;
+    for (let fID of friendIDs){
+      console.log(fID);
+      //this.getUser(fID).subscribe(data as User => {console.log(data.uName)});
+    }
+    return this.getCurrentUser();
+  }
+
   getCurrentUser() {
     return this.currentUser;
   }

@@ -81,9 +81,9 @@ style="background-color: rgb(197, 202, 206); color:white;" id="button-addon2"
       </div>
       <div class="modal-body">
         <ul>
-          <div *ngFor="let friend of userService.getCurrentUser().userDB.friends" class="col-3" style="padding:10px">
-            <label><input type="checkbox" value="">Add</label>>
-            {{ friend }}
+          <div *ngFor="let friend of userService.getUserFriendsUname().userDB.friends" class="col-3" style="padding:10px">
+              <label><input type="checkbox" value="">Add</label>>
+              {{ friend }}
           </div>
         </ul>
       </div>
